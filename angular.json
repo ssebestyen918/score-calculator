@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "score-calculator:build:production"
+              "buildTarget": "score-calculator:build:production"
             },
             "development": {
-              "browserTarget": "score-calculator:build:development"
+              "buildTarget": "score-calculator:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "score-calculator:build"
+            "buildTarget": "score-calculator:build"
           }
         },
         "test": {
