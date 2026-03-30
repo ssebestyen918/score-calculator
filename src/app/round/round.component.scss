@@ -1,0 +1,37 @@
+.title-bar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .left{
+        display: flex;
+        align-items: center;
+        .games{
+            color: #a69eaf;
+            background-color: #1d1b1e;
+            font-size: small;
+        }
+    }
+
+    .right{
+        display: flex;
+        align-items: center;
+        font-size: small;
+        color: #a69eaf;
+        .payout{
+            color: rgb(255, 112, 46);
+            background-color: rgb(94, 31, 1);
+            font-weight: 600;
+        }
+    }
+    .pill{
+        margin-left: 5px;
+        padding: 5px 10px;
+        border-radius: 15px;
+    }
+}
+
+.games-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 10px;
+}

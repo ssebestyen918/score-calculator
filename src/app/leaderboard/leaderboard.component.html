@@ -1,0 +1,11 @@
+<mat-card appearance="outlined">
+    <mat-card-content>
+        <div class="header-text">Leaderboard</div>
+        <div class="sub-text">
+            Total Pool: <span class="value">${{totalPool}}</span>
+        </div>
+        @for (leader of leaders; track $index) {
+            <app-leader [leader]="leader" [rank]="$index + 1"></app-leader>
+        }
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,30 @@
+mat-card{
+    background-color: rgb(18 18 18);
+    mat-card-content{
+        display: flex;
+        justify-content: space-between;
+    }
+}.winner{
+    border: 1px solid rgb(52, 229, 63);
+    background-color:rgb(19, 84, 23);
+    mat-card-content{
+        color: rgb(52, 229, 63);
+
+    }
+}
+.live{
+    border: 1px solid red;
+    background-color: rgb(54, 1, 1);
+    mat-card-content{
+        color: red
+
+    }
+}
+
+.name{
+    display: flex;
+    align-items: center;
+    mat-icon{
+        margin-right: 8px;
+    }
+}

@@ -1,0 +1,50 @@
+.icon-wrapper {
+    /* Set equal width and height */
+    width: 40px;
+    height: 40px;
+    /* Create the circle */
+    border-radius: 5px;
+
+    /* Center the icon using flexbox */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+  }
+
+  .header-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .header{
+    font-size: smaller;
+    color: #a69eaf
+  }
+  .sub-header{
+    font-weight: 600;
+  }
+
+  mat-card{
+    mat-card-content{
+        display: flex;
+    }
+      .orange{
+        color: rgb(255, 112, 46);
+        background-color: rgb(94, 31, 1);
+      }
+      .green{
+        color: rgb(52, 229, 63);
+        background-color:rgb(19, 84, 23);
+      }
+      .blue{
+        color: rgb(85, 144, 245);
+        background-color: rgb(32, 68, 128);
+      }
+      .pink{
+        color: rgb(245, 79, 203);
+        background-color: rgb(126, 42, 105);
+      }
+     
+}

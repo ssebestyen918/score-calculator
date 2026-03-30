@@ -1,0 +1,57 @@
+mat-card.upcoming{
+    border: 1px dashed #a69eaf;
+}
+
+mat-card.live{
+    border: 1px solid red;
+}
+
+mat-card.final{
+    border: 1px solid #a69eaf;
+}
+
+mat-icon{
+    font-size: 12px;
+    height: 12px;
+    width: 12px;
+    margin-right: 8px;
+}
+
+.left{
+    display: flex;
+    align-items: anchored-center;
+    span{
+        font-size: small;
+    }
+    color: #a69eaf;
+}
+
+.right{
+    font-size: small;
+    color: rgb(255, 112, 46);
+}
+
+.banner{
+    display: flex;
+    justify-content: space-between;
+}
+
+.teams{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+mat-divider{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.outcome{
+    font-size: small;
+    color: #a69eaf;
+    span{
+        color: rgb(255, 112, 46);
+    }
+}

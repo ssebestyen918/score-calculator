@@ -1,0 +1,43 @@
+<mat-card [ngClass]="game()?.Status">
+    <mat-card-content>
+        <div class="banner">
+            <div class="left">
+                @switch (game()?.Status) {
+                    @case (gameStatus.Upcoming) {
+                        <mat-icon>access_time</mat-icon>
+                    }
+                    @case (gameStatus.Live) {
+                        <mat-icon style="color: red;">live_tv</mat-icon>
+                    }
+                }
+                <span>Game {{game()?.Id}}</span>
+            </div>
+            <div class="right">
+                ${{game()?.Payout}}
+            </div>
+        </div>
+        <div class="teams">
+            <app-team 
+             [team]="game()?.Teams![0]"
+             [live] = "game()?.Status === gameStatus.Live"
+            ></app-team>
+            <app-team 
+                [team]="game()?.Teams![1]" 
+                [live] = "game()?.Status === gameStatus.Live"
+            ></app-team>
+
+        </div>
+        <mat-divider></mat-divider>
+        @switch (game()?.Status) {
+            @case (gameStatus.Upcoming) {
+                <div class="outcome"><i>Upcoming</i></div>
+            }
+            @case (gameStatus.Live) {
+                <div class="outcome">TBD</div>
+            }
+            @case (gameStatus.Final) {
+                <div class="outcome">Won by <span>{{winner}}</span></div>
+            }
+        }
+    </mat-card-content>
+</mat-card>

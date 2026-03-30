@@ -1,0 +1,9 @@
+<mat-card class="leader">
+    <mat-card-content>
+        <div class="left">
+            <div class="rank">{{rank()}}</div>
+            <div><div class="header-text">{{leader()?.Name}}</div> <div class="sub-text">{{leader()?.GamesWon}} games won</div></div>
+        </div>
+        <div class="right">${{leader()?.TotalPayout}}</div>
+    </mat-card-content>
+</mat-card>

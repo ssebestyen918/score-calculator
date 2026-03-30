@@ -3,10 +3,11 @@
 html {
   @include mat.theme((
     color: mat.$violet-palette,
-    typography: Roboto
+    typography: Roboto,
   ));
 
   &.theme-dark {
     color-scheme: dark; // Tells the browser to use dark system colors
+    font-family: 'Roboto', sans-serif
   }
 }

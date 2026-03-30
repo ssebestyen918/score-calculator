@@ -1,1 +1,52 @@
-{{data | json}}
+<h1>March Madness</h1>
+<mat-card appearance="outlined">
+    <mat-card-content>
+        <div class="summary">
+            <app-summary-item [header]="'Champion'" [subheader]="'TBD'" [color]="colorEnum.Pink" [icon]="'emoji_events'"></app-summary-item>
+            <app-summary-item [header]="'Prizes Awarded'" [subheader]="prizeSubheader" [color]="colorEnum.Green" [icon]="'attach_money'"></app-summary-item>
+            <app-summary-item [header]="'Games Played'" [subheader]="gameSubheader" [color]="colorEnum.Orange" [icon]="'sports_basketball'"></app-summary-item>
+            <app-summary-item [header]="'Current Leader'" [subheader]="currentLeaderSubheader" [color]="colorEnum.Blue" [icon]="'leaderboard'"></app-summary-item>
+        </div>
+    </mat-card-content>
+</mat-card>
+<div class="main-body">
+    <div class="shape">
+        <div>
+            <mat-card appearance="outlined">
+                <mat-card-content>
+                    <a mat-button href="#champ">Championship <span class="subtext">(1)</span></a>
+                    <a mat-button href="#final4">Final 4 <span class="subtext">(2)</span></a>
+                    <a mat-button href="#elite8">Elite 8 <span class="subtext">(4)</span></a>
+                    <a mat-button href="#sweet16">Sweet 16 <span class="subtext">(8)</span></a>
+                    <a mat-button href="#round32">Round of 32 <span class="subtext">(16)</span></a>
+                    <a mat-button href="#round64">Round of 64 <span class="subtext">(32)</span></a>
+                </mat-card-content> 
+            </mat-card>
+            <div class="round-container">
+                <div id="champ">
+                    <app-round (roundWinnersEvent)="addRoundWinners($event)" [title]="'Championship'" [games]="championship" [payout]="300" [gameCount]="1"></app-round>
+                </div>
+                <div id="final4">
+                    <app-round (roundWinnersEvent)="addRoundWinners($event)" [title]="'Final 4'" [games]="final4" [payout]="125" [gameCount]="2"></app-round>
+                </div>
+                <div id="elite8">
+                    <app-round (roundWinnersEvent)="addRoundWinners($event)" [title]="'Elite 8'" [games]="elite8" [payout]="70" [gameCount]="4"></app-round>
+                </div>
+                <div id="sweet16">
+                    <app-round (roundWinnersEvent)="addRoundWinners($event)" [title]="'Sweet 16'" [games]="sweet16" [payout]="35" [gameCount]="8"></app-round>
+                </div>
+                <div id="round32">
+                    <app-round (roundWinnersEvent)="addRoundWinners($event)" [title]="'Round of 32'" [games]="roundOf32" [payout]="15" [gameCount]="16"></app-round>
+                </div>
+                <div id="round64">
+                    <app-round (roundWinnersEvent)="addRoundWinners($event)" [title]="'Round of 64'" [games]="roundOf64" [payout]="10" [gameCount]="32"></app-round>
+                </div>
+            </div>
+        </div>
+        <div>
+            <app-leaderboard (currentLeaderEvent)="getCurrentLeader($event)" [winners]="allSquareWinners"></app-leaderboard>
+        </div>
+
+    </div>
+
+</div>

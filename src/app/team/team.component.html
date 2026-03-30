@@ -1,0 +1,11 @@
+<mat-card [ngClass]="getClass()">
+    <mat-card-content>
+        <div class="name">
+            @if(team()?.Winner){
+                <mat-icon>emoji_events</mat-icon>
+            }
+            {{team()?.Name || 'TBD'}}
+        </div>
+        <div class="score">{{team()?.Score || '-'}}</div>
+    </mat-card-content>
+</mat-card>

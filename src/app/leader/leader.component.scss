@@ -1,0 +1,35 @@
+.leader{
+    margin: 10px 0
+  }
+
+  .rank{
+    font-size: small;
+    margin-right: 15px;
+  }
+
+  .header-text{
+    font-weight: 600;
+    color: rgb(255, 112, 46);
+  }
+
+  .sub-text{
+    font-size: small;
+    color: #a69eaf;
+  }
+
+  .left{
+    display: flex;
+    align-items: center;
+  }
+
+  .right{
+    font-size: large;
+    font-weight: 600;
+    color: rgb(255, 112, 46);
+}
+
+  mat-card-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
