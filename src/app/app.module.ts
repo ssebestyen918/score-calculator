@@ -12,6 +12,7 @@ import { RoundComponent } from './round/round.component';
 import { GameComponent } from './game/game.component';
 import { TeamComponent } from './team/team.component';
 import { LeaderComponent } from './leader/leader.component';
+import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { LeaderComponent } from './leader/leader.component';
     MatDividerModule
   ],
   exports:[],
-  providers: [],
+  providers: [provideHttpClient()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

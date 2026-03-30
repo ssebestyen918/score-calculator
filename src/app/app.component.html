@@ -20,6 +20,7 @@
                     <a mat-button href="#sweet16">Sweet 16 <span class="subtext">(8)</span></a>
                     <a mat-button href="#round32">Round of 32 <span class="subtext">(16)</span></a>
                     <a mat-button href="#round64">Round of 64 <span class="subtext">(32)</span></a>
+                    <a mat-button href="#leaderBoard">Leaderboard</a>
                 </mat-card-content> 
             </mat-card>
             <div class="round-container">
@@ -43,7 +44,7 @@
                 </div>
             </div>
         </div>
-        <div>
+        <div id="leaderBoard">
             <app-leaderboard (currentLeaderEvent)="getCurrentLeader($event)" [winners]="allSquareWinners"></app-leaderboard>
         </div>
 

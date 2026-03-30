@@ -1,0 +1,9 @@
+{
+    "/bracket": {
+      "target": "https://ncaa-api.henrygd.me",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    }
+  }
+  
