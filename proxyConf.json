@@ -1,5 +1,5 @@
 {
-    "/bracket": {
+    "/brackets": {
       "target": "https://ncaa-api.henrygd.me",
       "secure": false,
       "changeOrigin": true,

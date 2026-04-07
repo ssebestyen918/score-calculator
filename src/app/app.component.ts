@@ -46,12 +46,19 @@ export class AppComponent implements OnInit{
       // use api
       this.service.getGames().pipe((take(1))).subscribe((response) => {
         gamesToUse = response;
+        const filteredData = gamesToUse.championships[0].games.filter((x) => x.sectionId !== 1).sort((a, b) => a.startTimeEpoch - b.startTimeEpoch)
+
+        this.setupGames(filteredData)
       })
     }
+    else{
+      const filteredData = gamesToUse.championships[0].games.filter((x) => x.sectionId !== 1).sort((a, b) => a.startTimeEpoch - b.startTimeEpoch)
+      this.setupGames(filteredData)
+    }
+  }
 
-    const filteredData = gamesToUse.championships[0].games.filter((x) => x.sectionId !== 1).sort((a, b) => a.startTimeEpoch - b.startTimeEpoch)
-    this.data = filteredData.map((x, i) => new Game(x, i));
-    // console.log(this.data)
+  setupGames(games: any){
+    this.data = games.map((x: any, i: any) => new Game(x, i));
 
     this.roundOf64 = this.data.filter((x) => x.Round === 1).sort((a,b) => b.Id - a.Id)
     this.roundOf32 = this.data.filter((x) => x.Round === 2).sort((a,b) => b.Id - a.Id)
