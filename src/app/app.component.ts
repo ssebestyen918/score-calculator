@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, resource } from '@angular/core';
 import { take } from 'rxjs';
 import { squares } from 'src/assets/squares';
 import { ColorIconEnum } from 'src/models/color-icon-enum';
@@ -17,6 +17,8 @@ import { ServiceService } from './service.service';
 })
 export class AppComponent implements OnInit{
 
+  private apiUrl = 'https://ncaa-api.henrygd.me/brackets/basketball-men/d1/2026';
+
   production = true;
   data: Game[] = [];
 
@@ -29,6 +31,7 @@ export class AppComponent implements OnInit{
 
   gameSubheader = '';
   prizeSubheader = '';
+  championSubheader = 'TBD'
 
   allSquareWinners: WinningSquare[] = [];
 
@@ -37,19 +40,13 @@ export class AppComponent implements OnInit{
 
   constructor(
     private cdRef: ChangeDetectorRef,
-    private readonly service: ServiceService
   ){}
 
-  ngOnInit(){
+  async ngOnInit(){
     let gamesToUse = testData;
     if(this.production){
       // use api
-      this.service.getGames().pipe((take(1))).subscribe((response) => {
-        gamesToUse = response;
-        const filteredData = gamesToUse.championships[0].games.filter((x) => x.sectionId !== 1).sort((a, b) => a.startTimeEpoch - b.startTimeEpoch)
-
-        this.setupGames(filteredData)
-      })
+          this.getGames()
     }
     else{
       const filteredData = gamesToUse.championships[0].games.filter((x) => x.sectionId !== 1).sort((a, b) => a.startTimeEpoch - b.startTimeEpoch)
@@ -67,7 +64,8 @@ export class AppComponent implements OnInit{
     this.final4 = this.data.filter((x) => x.Round === 5).sort((a,b) => b.Id - a.Id)
     this.championship = this.data.filter((x) => x.Round === 6).sort((a,b) => b.Id - a.Id)
 
-    this.gameSubheader = `${this.data.filter((x) => x.Status === StatusEnum.Final).length} / ${this.data.length}`
+    this.championSubheader = this.championship[0].Teams.find((team) => team.Winner)?.Name || 'TBD';
+    this.gameSubheader = `${this.data.filter((x) => x.Status === StatusEnum.Final).length} / ${this.data.length}`;
     this.prizeSubheader = `$${this.data.reduce((accumulator, currentValue) => {
       if(currentValue.Status === StatusEnum.Final){
         return accumulator + currentValue.Payout
@@ -95,5 +93,19 @@ export class AppComponent implements OnInit{
 
   getCurrentLeader(leader: Leader){
     this.currentLeaderSubheader = leader?.Name
+  }
+
+  async getGames() {
+    try {
+      const response = await fetch('https://proxy.corsfix.com/?' + this.apiUrl)
+      if (!response.ok) throw new Error('Network response was not ok');
+      
+      const data = await response.json();
+      const filteredData = data.championships[0].games.filter((x: any) => x.sectionId !== 1).sort((a: any, b: any) => a.startTimeEpoch - b.startTimeEpoch)
+      this.setupGames(filteredData)
+
+    } catch (error) {
+      console.error('Fetch error:', error);
+    }
   }
 }

@@ -10,7 +10,9 @@ export class ServiceService {
 
   constructor(private http: HttpClient) { }
 
-  getGames(){ // Consider defining an interface for type safety
-    return this.http.get<any>('/brackets/basketball-men/d1/2026');
+  getGames(){
+    return fetch('https://proxy.corsfix.com/?' + this.apiUrl)
+    .then((response) => response.json())
+    .then((data) => console.log(data));
   }
 }
